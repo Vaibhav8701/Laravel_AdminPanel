@@ -1,0 +1,133 @@
+@extends('layout.app')
+
+@section('title', 'Users')
+
+@section('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --text: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+        }
+        
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #115e59 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .page-header h1 { margin: 0; font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+        .create-btn { background: white; color: var(--primary); padding: 11px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); }
+        .create-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
+        .data-card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 1px solid var(--line); overflow: hidden; }
+        .table-wrapper { overflow-x: auto; }
+        .table { margin: 0; width: 100%; }
+        .table thead { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-bottom: 2px solid var(--line); }
+        .table th { padding: 16px; font-weight: 600; color: var(--text); border: none; text-align: left; font-size: 14px; }
+        .table td { padding: 16px; border-color: var(--line); color: var(--text); font-size: 14px; }
+        .table tbody tr { border-bottom: 1px solid var(--line); transition: background 0.3s; }
+        .table tbody tr:hover { background: #f8fafc; }
+        .role-badge { display: inline-block; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #0369a1; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-right: 6px; margin-bottom: 6px; border: 1px solid #7dd3fc; box-shadow: 0 2px 4px rgba(3, 105, 161, 0.1); }
+        .role-badge.empty { background: #f3f4f6; color: #6b7280; border-color: #e5e7eb; }
+        .actions-cell { display: flex; gap: 6px; justify-content: center; flex-wrap: nowrap; }
+        .btn-sm { padding: 8px 14px; font-size: 13px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); white-space: nowrap; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #115e59; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3); }
+        .btn-warning { background: #ea8c55; color: white; }
+        .btn-warning:hover { background: #d4752f; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(234, 140, 85, 0.3); }
+        .btn-danger { background: #dc2626; color: white; }
+        .btn-danger:hover { background: #b91c1c; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3); }
+        .empty-state { padding: 60px 20px; text-align: center; color: var(--muted); }
+        .empty-state i { font-size: 48px; opacity: 0.3; display: block; margin-bottom: 16px; }
+        @media (max-width: 768px) { 
+            .page-container { padding: 16px; } 
+            .page-header { flex-direction: column; gap: 12px; }
+            .table th, .table td { padding: 12px; font-size: 13px; }
+            .btn-sm { padding: 6px 10px; font-size: 12px; }
+            .actions-cell { flex-wrap: wrap; }
+        }
+    </style>
+@endsection
+
+@section('content')
+    @if (!has_permission('users.index'))
+        <script>window.location.href = "{{ route('access.denied') }}";</script>
+    @else
+    <div class="page-container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1><i class="fas fa-users"></i> Users Management</h1>
+            @if (has_permission('users.create'))
+            <a href="{{ route('users.create') }}" class="create-btn">
+                <i class="fas fa-plus"></i> Add User
+            </a>
+            @endif
+        </div>
+
+        <div class="data-card">
+            <div class="table-wrapper">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th style="width: 200px; text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $u)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $u->name }}</td>
+                            <td>{{ $u->email }}</td>
+                            <td>
+                                @if ($u->roles->isNotEmpty())
+                                    @foreach ($u->roles as $role)
+                                        <span class="role-badge">{{ $role->name }}</span>
+                                    @endforeach
+                                @else
+                                    <span class="role-badge" style="background: #f3f4f6; color: #6b7280;">No role</span>
+                                @endif
+                            </td>
+                            <td style="text-align: center;">
+                                <div class="actions-cell">
+                                    @if (has_permission('users.edit'))
+                                    <a href="{{ route('users.edit', $u->id) }}" class="btn btn-sm btn-primary" title="Edit user">
+                                       <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    @endif
+                                    @if (has_permission('users.permissions'))
+                                    <a href="{{ route('users.permissions', $u->id) }}" class="btn btn-sm btn-warning" title="Manage permissions">
+                                        <i class="fas fa-lock"></i> Access
+                                    </a>
+                                    @endif
+                                    @if (has_permission('users.delete'))
+                                    <a href="{{ route('users.delete', $u->id) }}"
+                                        onclick="return confirm('Are you sure you want to delete this user?');"
+                                        class="btn btn-sm btn-danger"
+                                        title="Delete user">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
+@endsection

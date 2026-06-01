@@ -1,0 +1,127 @@
+[
+    {
+        "text": "Dashboard",
+        "href": "dashboard",
+        "icon": "fas fa-database",
+        "target": "_self",
+        "title": "",
+        "modulesname": "Dashboard",
+        "moduleid": "1",
+        "deletestatus": "1",
+        "permission": "",
+        "is_active": "1"
+    },
+    {
+        "text": "Setting",
+        "href": "",
+        "icon": "fas fa-cogs",
+        "target": "_top",
+        "title": "My Home",
+        "modulesname": "setting",
+        "moduleid": 2,
+        "deletestatus": "1",
+        "permission": "Setting-index",
+        "is_active": "1",
+        "children": [
+            {
+                "text": "Menus",
+                "href": "menu-editor",
+                "icon": "far fa-bookmark",
+                "target": "_self",
+                "title": "",
+                "modulesname": "menus",
+                "moduleid": 3,
+                "deletestatus": "1",
+                "permission": "Menus-index",
+                "is_active": "1"
+            },
+            {
+                "text": "Modules",
+                "href": "modules",
+                "icon": "fas fa-th-large",
+                "target": "_self",
+                "title": "",
+                "modulesname": "Modules",
+                "moduleid": 4,
+                "deletestatus": "1",
+                "permission": "Modules-index",
+                "is_active": "1"
+            }
+        ]
+    },
+    {
+        "text": "manage users",
+        "href": "manage users",
+        "icon": "fas fa-users-cog",
+        "target": "home",
+        "title": "",
+        "modulesname": "manage users",
+        "moduleid": "6",
+        "deletestatus": "1",
+        "permission": "",
+        "is_active": "1",
+        "children": [
+            {
+                "text": "Users",
+                "href": "users",
+                "icon": "fas fa-users",
+                "target": "_self",
+                "title": "",
+                "modulesname": "Permission",
+                "moduleid": 7,
+                "deletestatus": "1",
+                "permission": "Users-index",
+                "is_active": "1"
+            },
+            {
+                "text": "Roles",
+                "href": "roles",
+                "icon": "far fa-address-card",
+                "target": "_self",
+                "title": "",
+                "modulesname": "Roles",
+                "moduleid": 8,
+                "deletestatus": "1",
+                "permission": "Roles-index",
+                "is_active": "1"
+            }
+        ]
+    },
+    {
+        "text": "manage profile",
+        "href": "manage profile",
+        "icon": "fas fa-user-circle",
+        "target": "_self",
+        "title": "",
+        "permission": "manage profile-index",
+        "moduleid": 9,
+        "deletestatus": "1",
+        "is_active": "1",
+        "children": [
+            {
+                "text": "Profile",
+                "href": "profile",
+                "icon": "fas fa-user-circle",
+                "target": "_self",
+                "title": "",
+                "modulesname": "manageUsers",
+                "moduleid": 10,
+                "deletestatus": "1",
+                "permission": "Profile-index",
+                "is_active": "1"
+            }
+        ]
+    },
+    {
+        "text": "Logout",
+        "href": "logout",
+        "icon": "fas fa-sign-out-alt",
+        "target": "_self",
+        "title": "",
+        "modulesname": "logout",
+        "moduleid": 12,
+        "deletestatus": "1",
+        "permission": "Logout-index",
+        "is_active": "1"
+    }
+]

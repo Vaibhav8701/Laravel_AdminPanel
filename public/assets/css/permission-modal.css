@@ -1,0 +1,300 @@
+/* Permission Modal Styling - Modern Design System */
+
+:root {
+    --primary: #0f766e;
+    --text: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+}
+
+/* Modal Overlay */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#permissionModal .modal-content {
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background: white;
+}
+
+#permissionModal .modal-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #115e59 100%);
+    border: none;
+    padding: 24px;
+    color: white;
+}
+
+#permissionModal .modal-title {
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.btn-close-white {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+}
+
+#permissionModal .modal-body {
+    padding: 28px 24px;
+    background-color: #ffffff;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#permissionsList {
+    margin: 0;
+    padding: 0;
+}
+
+/* Scrollbar styling */
+#permissionsList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#permissionsList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#permissionsList::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 3px;
+}
+
+#permissionsList::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+}
+
+.permission-row {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.permission-row:hover {
+    background: #f1f5f9;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
+}
+
+.permission-row .row {
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+.permission-row label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    min-width: 120px;
+    display: block;
+}
+
+.permission-input {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+    flex: 1;
+    min-width: 200px;
+}
+
+.permission-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+    background: white;
+}
+
+.permission-input::placeholder {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.permission-row .btn-danger {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: white;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.permission-row .btn-danger:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.permission-row .btn-danger:active {
+    transform: translateY(0);
+}
+
+#permissionModal .modal-footer {
+    background-color: #f8fafc;
+    border-top: 1px solid var(--line);
+    padding: 20px 24px;
+    gap: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Modal Footer Buttons */
+#permissionModal .modal-footer .btn {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+#permissionModal .btn-info {
+    background-color: #0891b2;
+    color: white;
+}
+
+#permissionModal .btn-info:hover {
+    background-color: #0e7490;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+}
+
+#permissionModal .btn-info:active {
+    transform: translateY(0);
+}
+
+#permissionModal .btn-success {
+    background-color: #16a34a;
+    color: white;
+}
+
+#permissionModal .btn-success:hover {
+    background-color: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+#permissionModal .btn-success:active {
+    transform: translateY(0);
+}
+
+/* Animation for modal appearance */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Backdrop animation */
+.modal.fade {
+    transition: opacity 0.3s ease-out;
+}
+
+.modal {
+    --bs-backdrop-bg: #000;
+    --bs-backdrop-opacity: 0.5;
+}
+
+/* Empty state message */
+.permission-row:empty {
+    display: none;
+}
+
+#permissionsList:empty::after {
+    content: 'No permissions added yet. Click "Add More" to add permissions.';
+    display: block;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #permissionModal .modal-dialog {
+        margin: 10px;
+    }
+
+    #permissionModal .modal-body {
+        padding: 20px 16px;
+        max-height: 60vh;
+    }
+
+    .permission-row {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .permission-row .row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .permission-row label {
+        width: 100%;
+        min-width: auto;
+        margin-bottom: 8px;
+    }
+
+    .permission-input {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .permission-row .btn-danger {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #permissionModal .modal-footer {
+        flex-direction: column;
+    }
+
+    #permissionModal .modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

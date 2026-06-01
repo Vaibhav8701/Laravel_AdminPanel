@@ -1,0 +1,282 @@
+
+    .sidebar-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    /* Header with Profile */
+    .sidebar-header {
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .sidebar-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .sidebar-profile-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .sidebar-profile-name {
+        font-weight: 700;
+        color: #e2e8f0;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .sidebar-profile-email {
+        font-size: 12px;
+        color: #94a3b8;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Search */
+    .sidebar-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid rgba(153, 246, 228, 0.2);
+        border-radius: 8px;
+        background: rgba(15, 23, 42, 0.35);
+        color: #cbd5e1;
+        margin-bottom: 16px;
+        font-size: 13px;
+    }
+
+    .sidebar-search i {
+        position: absolute;
+        right: 12px;
+        color: #cbd5e1;
+        font-size: 13px;
+        pointer-events: none;
+    }
+
+    .sidebar-search-input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 12px;
+        color: #e2e8f0;
+        font-family: inherit;
+        padding-right: 24px;
+    }
+
+    .sidebar-search-input::placeholder {
+        color: #64748b;
+    }
+
+    .sidebar-search:focus-within {
+        border-color: #99f6e4;
+        box-shadow: 0 0 0 3px rgba(153, 246, 228, 0.1);
+    }
+
+    /* Navigation */
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Menu Items */
+    .sidebar-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #cbd5e1;
+        background: transparent;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .sidebar-menu-item i {
+        font-size: 16px;
+        min-width: 20px;
+        text-align: center;
+    }
+
+    .sidebar-menu-item:hover {
+        background: rgba(45, 212, 191, 0.15);
+        color: #99f6e4;
+    }
+
+    .sidebar-menu-item.active {
+        background: rgba(45, 212, 191, 0.25);
+        color: #99f6e4;
+        border-left: 3px solid #14b8a6;
+        padding-left: 11px;
+    }
+
+    /* Menu Groups */
+    .sidebar-menu-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .sidebar-menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #cbd5e1;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .sidebar-menu-toggle i:last-child {
+        margin-left: auto;
+        font-size: 12px;
+        transition: transform 0.3s;
+    }
+
+    .sidebar-menu-toggle:hover {
+        background: rgba(45, 212, 191, 0.15);
+        color: #99f6e4;
+    }
+
+    .sidebar-menu-toggle.active i:last-child {
+        transform: rotate(90deg);
+    }
+
+    /* Submenus */
+    .sidebar-submenu {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 6px 0 6px 8px;
+        margin: 4px 0;
+        border-left: 2px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .sidebar-submenu.active {
+        display: flex;
+    }
+
+    .sidebar-submenu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 9px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #cbd5e1;
+        background: transparent;
+        transition: all 0.2s;
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+    .sidebar-submenu-item i {
+        font-size: 14px;
+        min-width: 18px;
+        text-align: center;
+    }
+
+    .sidebar-submenu-item:hover {
+        background: rgba(45, 212, 191, 0.1);
+        color: #99f6e4;
+        padding-left: 16px;
+    }
+
+    .sidebar-submenu-item.active {
+        background: rgba(45, 212, 191, 0.15);
+        color: #99f6e4;
+    }
+
+    /* Footer */
+    .sidebar-footer {
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-logout-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 11px 14px;
+        border-radius: 8px;
+        background: rgba(220, 38, 38, 0.15);
+        color: #fca5a5;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .sidebar-logout-btn i {
+        font-size: 16px;
+    }
+
+    .sidebar-logout-btn:hover {
+        background: rgba(220, 38, 38, 0.25);
+        color: #fecaca;
+    }
+
+    .sidebar-item-hidden {
+        display: none !important;
+    }
+
+    .sidebar-footer {
+        margin-top: auto;
+        padding-top: 20px;
+        color: #94a3b8;
+        font-size: 13px;
+    }
